@@ -1,0 +1,29 @@
+<h1>Welcome to class {{ title }} app is running!</h1>
+
+<h2>Students List!</h2>
+<div *ngFor="let student of mystudents">
+  <h3>{{student.id}}</h3>
+
+  <h3>
+    <a [title]="student.intro + ' Click here for more info'">{{student.name}} <!-- When hovering, content in [title] will be displayed. -->
+    </a>
+  </h3>
+
+  <button type="button"
+  (click)="myIntro()">Click Me!</button>
+  <!-- "Click Me!" is name of button. -->
+  <!-- (click) = "myIntro()" -> myIntro() is prompted upon clicking the button.-->
+
+  <p>{{student.subjects}}</p>
+  <p *ngIf="Grader(student) == 'A'">
+     <button type="button"
+      (click) = "gradeNotify(student)">Grade results</button>
+  </p>
+
+  <!-- app-student-alerts > Calling child component -->
+  <!-- [student] = "student" > passing "Student" object in parent to "student" variable in child (Declared in @Input) -->
+  <!-- (notify)="onNotify(student) > attaching onNotify(student) alert to emitted output from child component (Declared in @Output) -->
+  <app-student-alerts [student]="student" (notify)="onNotify(student)"></app-student-alerts> 
+
+</div>
+

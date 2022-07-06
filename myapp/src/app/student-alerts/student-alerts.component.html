@@ -1,0 +1,9 @@
+<p>student-alerts works!</p>
+<!-- Emits the content from onNotify(student) from parent -->
+<p *ngIf=" student && student.subjects">
+    {{student.intro}}
+    <button type="button"
+        (click)="notify.emit()"  
+    >
+    Notify Me!</button>
+</p>
